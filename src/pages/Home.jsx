@@ -27,21 +27,39 @@ const Home = ({ setPlayers, setGame }) => {
                 score: 0,
                 winScore: 0,
                 tieScore: 0,
+                havePlayedWith: [],
             }))
         );
         setGame({
-            round: 0,
+            round: 1,
             prevGames: [],
             currentGame: [],
             totalRounds: rounds,
         });
     };
     return (
-        <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1>Home</h1>
-            <textarea ref={textAreaRef}></textarea>
-            <input ref={roundInputRef} type="number" />
-            <button onClick={handleSubmit}>Submit</button>
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
+            <div>
+                Players
+                <textarea ref={textAreaRef}></textarea>
+            </div>
+            <div>
+                Round
+                <input ref={roundInputRef} type="number" />
+            </div>
+            <button
+                onClick={handleSubmit}
+                style={{ width: "fit-content", marginTop: "10px" }}
+            >
+                Submit
+            </button>
         </div>
     );
 };

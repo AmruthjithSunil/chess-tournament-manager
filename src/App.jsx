@@ -38,7 +38,14 @@ function App() {
     if (page === "home") {
         return <Home setPlayers={setPlayers} setGame={setGame} />;
     } else {
-        return <Play game={game} players={players} setPlayers={setPlayers} />;
+        return (
+            <Play
+                game={game}
+                setGame={setGame}
+                players={players}
+                setPlayers={setPlayers}
+            />
+        );
     }
 }
 
