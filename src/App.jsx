@@ -11,6 +11,17 @@ function App() {
             : []
     );
 
+    const [game, setGame] = useState(
+        localStorage.getItem("game")
+            ? JSON.parse(localStorage.getItem("game"))
+            : {
+                  round: 0,
+                  prevGames: [],
+                  currentGame: [],
+                  totalRounds: 0,
+              }
+    );
+
     useEffect(() => {
         localStorage.setItem("players", JSON.stringify(players));
         if (players.length && page === "home") {
@@ -19,10 +30,15 @@ function App() {
             setPage("home");
         }
     }, [players]);
+
+    useEffect(() => {
+        localStorage.setItem("game", JSON.stringify(game));
+    }, [game]);
+
     if (page === "home") {
-        return <Home setPlayers={setPlayers} />;
+        return <Home setPlayers={setPlayers} setGame={setGame} />;
     } else {
-        return <Play players={players} setPlayers={setPlayers} />;
+        return <Play game={game} players={players} setPlayers={setPlayers} />;
     }
 }
 
